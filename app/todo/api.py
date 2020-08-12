@@ -6,7 +6,6 @@ from flask import (Blueprint, jsonify, redirect, render_template, request,
                    session, url_for)
 
 from app.models import DB, Todo
-from flask_restful import Api, Resource
 from sqlalchemy import asc, desc
 from sqlalchemy.exc import IntegrityError
 
@@ -66,5 +65,5 @@ def task_view():
         email = request.form.get('email')
     elif request.method == 'GET':
         email = session['email']
-    tasks = Todo.query.filter(Todo.email == email).order_by(desc(Todo.updated_at)) .all()
+    tasks = Todo.query.filter(Todo.email == email).order_by(desc(Todo.created_at)) .all()
     return render_template('tasks.html', todo_list=tasks)
