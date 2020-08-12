@@ -1,0 +1,33 @@
+<!-- templates/signup.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    <h3 id="login-signup">Sign Up</h3>
+    <div id="form-wrapper">
+        <form method="POST" action="/register">
+            <div>
+                <div>
+                    <input type="email" name="email" placeholder="Email" autofocus="" required>
+                </div>
+            </div>
+            <div id="input-div-wrapper">
+                <div>
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+            </div>
+            <br><br>
+
+            <button id="button-wrapper">Sign Up</button>
+        </form>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="message-div">
+                {{ messages[0] }}. Go to <a href="{{ url_for('auth-api.login_view') }}">login page</a>.
+            </div>
+        {% endif %}
+        {% endwith %}
+    </div>
+</div>
+{% endblock %}

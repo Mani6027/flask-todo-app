@@ -1,0 +1,85 @@
+<!-- templates/base.html -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ToDo</title>
+    <style type="text/css">
+    body{
+        background-color:#A28089;
+    }
+    #login-signup{
+        position: absolute;
+        font-size: 22px;
+        top: 190px;
+        left: 24px;
+        margin: 30px 10px 0px 600px;
+    }
+    #form-wrapper {     
+        width: 200px;           
+        height: 200px;
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        display: block;
+        margin:-200px 0px 0px -140px;
+    }
+    #button-wrapper{
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        padding: 8px;
+        margin-left: -60px;
+        background-color: #3C97D3;
+        border-radius: 0.7em;
+    }
+    #input-div-wrapper{
+        padding: 10px;
+        position: absolute;
+        margin: 3px 0px 0px -10px;
+    }
+    .task-button{
+        position: relative;
+        padding: 3px;
+        margin: 30px 10px 0px 10px;
+        transition: all 0.4s ease 0s;
+    }
+    .message-div{
+        position: relative;
+        margin: 35px 0px 10px -90px;
+    }
+    </style>
+</head>
+<body>
+    <section>
+        <div>
+            <div style="display: inline-block;">
+                <form action="/">
+                    <input type="submit" value="Home" />
+                </form>
+            </div>
+            <div style="display: inline-block;">
+                <form action="/login">
+                    <input type="submit" value="Login" />
+                </form>
+            </div>
+            <div style="display: inline-block;">
+                <form action="/register">
+                    <input type="submit" value="Sign Up" />
+                </form>
+            </div>
+        </div>
+        <div >
+            <div>
+               {% block content %}
+               {% endblock %}
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
