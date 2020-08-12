@@ -1,0 +1,34 @@
+<!-- templates/login.html -->
+{% extends "base.html" %}
+{% block content %}
+<div>
+    <h3 id="login-signup">Login</h3>
+    <div id="form-wrapper">
+        <form method="POST" action="/login">
+            <div>
+                <div>
+                    <input type="email" name="email" placeholder="Username" autofocus="" required>
+                </div>
+            </div>
+            <div>
+                <div id="input-div-wrapper">
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+            </div>
+            <button id='button-wrapper'>Login</button>
+        </form>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="message-div">
+                {{ messages[0] }}
+            </div>
+        {% endif %}
+        {% endwith %}
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+

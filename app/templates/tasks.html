@@ -1,0 +1,61 @@
+<!-- templates/tasks.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+    <div style="margin-top: 50px;">
+        <h1>TODO</h1>
+
+        <form action="/todo/create" method="post">
+            <div class="field">
+                <label>Today's Task:</label>
+                <input type="text" name="task_name" placeholder="Next task..." 
+                    value="{{ request.form.task_name }}" required><br>
+            </div>
+            <button class="task-button" type="submit">Create Task</button>
+        </form>
+        <hr>
+
+        <h3>Task</h3>
+        {% for todo in todo_list %}
+        <div>
+            <ul>
+            <li>
+                {% if todo.status == "not-completed" %}
+                <p>
+                    {{ todo.task_name }}
+                </p>
+                {% else %}
+                <del>
+                    {{todo.task_name}}
+                </del>
+                {% endif %}
+            </li>
+
+            {% if todo.status == "not-completed" %}
+            <span>Yet To Complete</span>
+            <a href="/todo/update/{{ todo.id }}">Close</a>
+            
+            <a href="/todo/edit/{{ todo.id }}" onclick="return taskEdit()">Edit</a>
+            <script type="text/javascript">
+                function taskEdit(){
+                    document.getElementById('textInput');
+                }
+            </script>
+            {% else %}
+            <span>Completed</span>
+            <a href="/todo/reopen/{{ todo.id }}">Reopen</a>
+            {% endif %}
+
+            <a href="/todo/delete/{{ todo.id }}">Delete</a>
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+    <br>
+    <form action="/logout" method="get">
+        <div>
+            <button type="submit">Logout</button>
+        </div>
+    </form>
+{% endblock %}
