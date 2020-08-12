@@ -16,7 +16,7 @@ Create a .env file with the following environment variables.
 ```ini
 FLASK_APP=run.py
 FLASK_ENV=development
-FLASK_RUN_PORT=5008
+FLASK_RUN_PORT=5000
 FLASK_DEBUG=1
 LOG_LEVEL=DEBUG
 
