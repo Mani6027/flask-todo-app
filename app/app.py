@@ -2,6 +2,7 @@ from flask import Flask
 from flask_login import LoginManager
 
 from app.auth.api import AUTH_API
+from app.commands import create_tables
 from app.config import DATABASE_URI, SECRET_KEY
 from app.models import DB, User
 from app.todo.api import TODO_API
@@ -18,8 +19,8 @@ def create_app():
 
     # Flask login-manager to manage user login.
     login_manager = LoginManager()
-    login_manager.login_view = 'auth-api.login'
     login_manager.init_app(app)
+    login_manager.login_view = 'auth-api.login'
  
     register_blueprint(app)
     initiate_db(app)
@@ -27,6 +28,8 @@ def create_app():
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(user_id)
+    
+    app.cli.add_command(create_tables)
 
     return app
 
