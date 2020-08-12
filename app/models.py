@@ -16,7 +16,6 @@ class User(UserMixin, DB.Model):
 
     id = Column(UUID(as_uuid=True), primary_key=True)
     email = Column(String(50), nullable=False)
-    username = Column(String(50), nullable=False)
     password = Column(String(200), nullable=False)
     created_at = Column(DateTime, default=datetime.now())
     updated_at = Column(DateTime)
