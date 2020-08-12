@@ -35,7 +35,6 @@
             {% if todo.status == "not-completed" %}
             <span>Yet To Complete</span>
             <a href="/todo/update/{{ todo.id }}">Close</a>
-            <!-- <a href="/todo/edit/{{ todo.id }}">Edit</a> -->
             {% else %}
             <span>Completed</span>
             <a href="/todo/reopen/{{ todo.id }}">Reopen</a>
