@@ -15,7 +15,7 @@ requests = "*"
 flask-login = "*"
 pylint = "*"
 importchecker = "*"
-gunicorn = "*"
+gunicorn = "==19.9.0"
 click = "*"
 
 [requires]
