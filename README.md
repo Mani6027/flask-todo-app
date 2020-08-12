@@ -21,11 +21,7 @@ FLASK_DEBUG=1
 LOG_LEVEL=DEBUG
 
 # Database
-DATABASE_USERNAME=postgres
-DATABASE_PASSWORD=postgres
-DATABASE_HOST=localhost
-DATABASE_NAME=postgres
-DATABASE_PORT=5432
+DATABASE_URL=postgresql+psycopg2://postgres:postgres@localhost:5432/postgres
 
 ```
 
