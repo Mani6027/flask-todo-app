@@ -64,6 +64,10 @@ def task_view():
         session['email'] = request.form.get('email')
         email = request.form.get('email')
     elif request.method == 'GET':
-        email = session['email']
+        email = session.get('email')
+        
+    if not email:
+        return redirect(url_for('auth-api.login'))
+
     tasks = Todo.query.filter(Todo.email == email).order_by(desc(Todo.created_at)) .all()
     return render_template('tasks.html', todo_list=tasks)

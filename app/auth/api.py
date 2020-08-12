@@ -67,4 +67,5 @@ def login_view():
 
 @AUTH_API.route('/logout')
 def logout():
+    session.clear()
     return render_template('login.html')
