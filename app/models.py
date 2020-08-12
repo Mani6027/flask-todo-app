@@ -8,7 +8,7 @@ from sqlalchemy.orm import relationship
 
 DB = SQLAlchemy()
 
-TASK_STATUS = ENUM('completed', 'not-completed')
+TASK_STATUS = ENUM('completed', 'not-completed', name='task_status')
 
 # Model for user.
 class User(UserMixin, DB.Model):
