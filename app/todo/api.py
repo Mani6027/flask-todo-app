@@ -21,13 +21,23 @@ def health():
 
 
 @TODO_API.route('/create', methods=['POST'])
-def create_task():
+def manage_task():
     task_name = request.form['task_name']
     task = Todo(id=uuid4(),
                 task_name=task_name,
                 email=session['email'],
                 status='not-completed')
     DB.session.add(task)
+    DB.session.commit()
+    return redirect(url_for('todo-api.task_view'))
+
+
+@TODO_API.route('/edit', methods=['PATCH'])
+def edit_task():
+    task_id = request.form['id']
+    task_name = request.form['task_name']
+    task = Todo.query.get(id)
+    task.task_name = task_name
     DB.session.commit()
     return redirect(url_for('todo-api.task_view'))
 
@@ -65,7 +75,7 @@ def task_view():
         email = request.form.get('email')
     elif request.method == 'GET':
         email = session.get('email')
-        
+
     if not email:
         return redirect(url_for('auth-api.login'))
 
