@@ -1,13 +1,19 @@
 # Flask-Todo-App
+
 Simple ToDo application using python-flask
 
-Development
+## Development
 Install all package requirements in a virtualenv with
 
+```bash
 pipenv install
-Environment Variables
+```
+
+## Environment Variables
+
 Create a .env file with the following environment variables.
 
+```ini
 FLASK_APP=run.py
 FLASK_ENV=development
 FLASK_RUN_PORT=5008
@@ -21,6 +27,7 @@ DATABASE_HOST=localhost
 DATABASE_NAME=postgres
 DATABASE_PORT=5432
 
+```
 
 ### Serve with Flask
 
@@ -28,3 +35,5 @@ Start a local Flask server with the following command
 
 ```bash
 flask run
+```
+
