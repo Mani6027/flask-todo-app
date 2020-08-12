@@ -39,10 +39,11 @@ def register_view():
         flash('Email address already exists')
         return redirect(url_for('auth-api.signup'))
     
-    new_user = User(email=email,
+    # We can avoid IntergrityError using uuid4.
+    new_user = User(id=uuid4(),
+                    email=email,
                     password=generate_password_hash(password, method='sha256'))
     
-    # Need exception, to handle IntergrityError.
     DB.session.add(new_user)
     DB.session.commit()
 

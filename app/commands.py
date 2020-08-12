@@ -1,9 +1,10 @@
 import click
 from flask.cli import with_appcontext
 
-from app.models import db, User, Todo
+from app.models import DB, User, Todo
 
 @click.command(name='create_tables')
 @with_appcontext
 def create_tables():
-    db.create_all()
+    click.echo('Creating all the tables...')
+    DB.create_all()
