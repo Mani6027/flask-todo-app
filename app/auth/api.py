@@ -9,7 +9,6 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from app.models import DB, Todo, User
 from flask_login import login_user
-from flask_restful import Api, Resource
 from sqlalchemy.exc import IntegrityError
 
 AUTH_API = Blueprint('auth-api', import_name=__name__, url_prefix='')
